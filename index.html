@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP FINAL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Trabajo Final</h1>
+            <h2>Mis 7 años en la Escuela Técnica N°5 Amancio Williams</h2>
+        </nav>
+    </header>
+
+    <main>
+        <div class="text-box">
+            <h3>Mi ciclo lectivo</h3>
+       
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="imagenes/1er.jpg" alt="Imagen 1" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/2do.jpg" alt="Imagen 2" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/3er.jpg" alt="Imagen 3" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/4to.jpg" alt="Imagen 4" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/5to.jpg" alt="Imagen 5" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/6to.jpg" alt="Imagen 6" class="carousel-image">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/7mo.jpg" alt="Imagen 7" class="carousel-image">
+                </div>
+            </div>
+            <button class="carousel-button prev">&#10094;</button>
+            <button class="carousel-button next">&#10095;</button>
+        </div>
+        
+     
+        <div class="carousel-title">
+            <h3 id="carousel-title-text">Primer Año</h3>
+        </div>
+      
+    <div class="text-box">
+        <p>
+            Durante todos estos años, aprendí múltiples cosas, desde lecciones de vida 
+            hasta aprendizajes y conocimiento que sigo usando en el transcurso de mi vida.
+</p>
+    </div>
+    </div>
+    <!-- Botón para abrir/cerrar la sección "Qué aprendí" -->
+<button class="toggle-button" onclick="toggleLearned()">Qué aprendí</button>
+
+<!-- Sección desplegable "Qué aprendí" -->
+<section id="what-i-learned" class="hidden">
+    <div class="learned-text">
+        Aprendí lecciones de vida por profesores, amigos y familia, aprendí a manejarme en un ambiente distinto, con compañeros nuevos, ambientes distintos por las pasantías, estuve en televisión, me entrevistaron, hablé con muchísimas personas de distintos países, aprendí a arreglar notebooks del gobierno, a programar distintos lenguajes como C++, Java, JavaScript, Python, utilicé múltiples motores de juegos para exponer en los distintos años, pasé por una pandemia, y mientras más pasa el tiempo, más valor le tengo a esta escuela y a quienes me acompañaron, y la voy a extrañar mucho, pero a su vez me entusiasma un montón manejarme en un ambiente tan nuevo y desconocido como lo es la facultad, me alegra haber pasado tanto tiempo y aprender mil y un cosas en la secundaria, y estoy con muchísimas ganas de comenzar esa nueva etapa.
+    </div>
+</section>
+<button class="toggle-button" onclick="toggleSection()">Menciones Honorables</button>
+        
+<!-- Sección desplegable -->
+<section id="honorable-mentions" class="hidden">
+    <div class="honorable-grid">
+    </div>
+</section>
+    <script src="scripts.js"></script>
+    <script>
+        async function cargarDatos() {
+            const respuesta = await fetch('cargar_datos.php');
+            const datos = await respuesta.json();
+    
+            // Cargar carrusel
+            const carrusel = document.querySelector('.carousel');
+            datos.carrusel.forEach((imagen) => {
+                const item = document.createElement('div');
+                item.classList.add('carousel-item');
+                item.innerHTML = `
+                    <img src="${imagen.ruta}" alt="${imagen.titulo}">
+                    <h2>${imagen.titulo}</h2>
+                `;
+                carrusel.appendChild(item);
+            });
+    
+            // Cargar menciones honorables
+            const menciones = document.querySelector('.honorable-grid');
+            datos.menciones.forEach((imagen) => {
+                const item = document.createElement('div');
+                item.classList.add('honorable-item');
+                item.innerHTML = `<img src="${imagen.ruta}" alt="${imagen.descripcion}">`;
+                menciones.appendChild(item);
+            });
+    
+            // Activar la primera imagen del carrusel
+            if (carrusel.children.length > 0) {
+                carrusel.children[0].classList.add('active');
+            }
+        }
+    
+        window.onload = cargarDatos;
+    </script>
+  <div class="upload-section">
+    <h2>Subir una nueva imagen</h2>
+    <form action="insertar.php" method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo" required>
+            <option value="carrusel">Carrusel</option>
+            <option value="mencion">Menciones Honorables</option>
+        </select>
+        <br><br>
+
+        <label for="titulo">Título (opcional):</label>
+        <input type="text" name="titulo" id="titulo" placeholder="Título de la imagen">
+        <br><br>
+
+        <label for="descripcion">Descripción (opcional):</label>
+        <textarea name="descripcion" id="descripcion" rows="3" placeholder="Descripción de la mención"></textarea>
+        <br><br>
+
+        <label for="imagen">Selecciona una imagen:</label>
+        <input type="file" name="imagen" id="imagen" accept="image/*" required>
+        <br><br>
+
+        <button type="submit" class="upload-button">Subir Imagen</button>
+    </form>
+</div>
+    <footer>
+        <p>&copy; 2024 - Página diseñada para el Trabajo Final</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header nav {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+.text-box {
+    margin: 2rem auto; 
+    max-width: 80%; 
+    text-align: center;
+    font-size: 1.2rem; 
+    line-height: 1.6; 
+    color: #333; 
+    font-style: italic; 
+    background-color: transparent;
+    border: none; 
+    padding: 0; 
+}
+
+.carousel {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    height: 500px; 
+    margin: 2rem auto;
+    overflow: hidden; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-track {
+    display: flex; 
+    transition: transform 0.5s ease-in-out; 
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+
+.carousel-image {
+    width: auto; 
+    height: 100%; 
+    object-fit: contain; 
+    display: block;
+    max-height: 100%; 
+    max-width: 100%; 
+}
+
+/* Title */
+.carousel-title {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.carousel-title h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+/* Botón para desplegar la sección */
+.toggle-button {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #555;
+}
+
+/* Sección oculta inicialmente */
+.hidden {
+    display: none;
+}
+
+/* Sección desplegable */
+#honorable-mentions {
+    margin: 2rem auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Cuadrícula de imágenes */
+.honorable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 1rem; /* Espacio entre las imágenes */
+}
+
+.honorable-item img {
+    width: 100%; /* Las imágenes ocuparán el ancho completo del contenedor */
+    height: auto; /* Mantendrá la proporción */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+}
+/* Botón para la nueva sección */
+.toggle-button {
+    display: block;
+    margin: 1.5rem auto;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #555;
+}
+
+/* Ocultar inicialmente la sección */
+.hidden {
+    display: none;
+}
+
+/* Estilo del cuadro de texto */
+.learned-text {
+    margin: 2rem auto;
+    max-width: 80%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    background-color: #f9f9f9; /* Fondo claro para destacar */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+}.upload-section {
+    width: 60%;
+    margin: 40px auto;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upload-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-form label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.upload-form input[type="text"],
+.upload-form textarea,
+.upload-form select {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.upload-form input[type="file"] {
+    border: none;
+    font-size: 1rem;
+}
+
+.upload-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
